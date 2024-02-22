@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Javascript</h1>
+    <h2>本期預測號碼 ==></h2>
+
+
+
+    <script>
+
+        //  產生亂數
+        // for (let i = 0; i < 10; i++) {
+        //     let r = Math.floor(Math.random() * 49) + 1;
+        //     console.log(r)
+        // }
+
+        // while (true) {
+        //     let r = getRandomInt(1, 49);
+        //     console.log(r);
+        //     if (r == 49) {
+        //         break;
+        //     }
+        // }
+        function getRandomInt(start, end) {
+            let r = Math.floor(Math.random() * end) + start;
+            return r;
+        }
+
+
+        let rows = [];
+        for (let j = 0; j < 5; j++) {
+            let numbers = [];
+
+            for (let i = 0; i < 6; i++) {
+                let r = getRandomInt(1, 49);
+                // document.write(`<h2>第${i + 1}組號碼為: ${r}</h2>`);
+                numbers.push(r)
+            }
+            // console.log(numbers);
+            rows.push(numbers);
+            document.write(`<ol>第${j + 1}組 產生的號碼為 ${numbers}</ol>`)
+        }
+        console.log(rows);
+
+
+    </script>
+</body>
+
+</html>
