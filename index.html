@@ -29,26 +29,57 @@
         //     }
         // }
         function getRandomInt(start, end) {
-            let r = Math.floor(Math.random() * end) + start;
-            return r;
+            let x = Math.floor(Math.random() * end) + start;
+            return x;
         }
 
+        document.write(Date() + '<hr>');
 
         let rows = [];
         for (let j = 0; j < 5; j++) {
             let numbers = [];
-
-            for (let i = 0; i < 6; i++) {
-                let r = getRandomInt(1, 49);
-                // document.write(`<h2>第${i + 1}組號碼為: ${r}</h2>`);
-                numbers.push(r)
+            
+            while (true){
+                let x = getRandomInt(1,49);
+                if (!numbers.includes(x)){
+                    numbers.push(x);
+                }
+                if (numbers.length==6){
+                    break;
+                }
             }
-            // console.log(numbers);
+            numbers.sort(compare)
             rows.push(numbers);
-            document.write(`<ol>第${j + 1}組 產生的號碼為 ${numbers}</ol>`)
+        }  
+        // 升續 
+        function compare(a,b){
+            return a-b;
         }
-        console.log(rows);
 
+        console.log(rows)
+
+
+        
+        for (let i = 0 ;i<rows.length;i++){
+            result = rows[i].join(" , ");
+            console.log(result);
+            document.write(`<h3>第${i+1}組號碼：${result}</h3><hr>`)
+        }
+        
+                // let rows = [];
+                // for (let j = 0; j < 5; j++) {
+                //     let numbers = [];
+        
+                //     for (let i = 0; i < 6; i++) {
+                //         let r = getRandomInt(1, 49);
+                //         // document.write(`<h2>第${i + 1}組號碼為: ${r}</h2>`);
+                //         numbers.push(r)
+                //     }
+                //     // console.log(numbers);
+                //     rows.push(numbers);
+                //     document.write(`<ol>第${j + 1}組 產生的號碼為 ${numbers}</ol>`)
+                // }
+                // console.log(rows);
 
     </script>
 </body>
