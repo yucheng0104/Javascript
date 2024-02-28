@@ -17,40 +17,58 @@ function getRandomInt(start, end) {
     return x;
 }
 
-document.write(Date() + '<hr>');
+function getNumbers(num, length) {
+    let rows = [];
+    for (let j = 0; j < num; j++) {
+        let numbers = [];
 
-let rows = [];
-for (let j = 0; j < 5; j++) {
-    let numbers = [];
-
-    while (true) {
-        let x = getRandomInt(1, 49);
-        if (!numbers.includes(x)) {
-            numbers.push(x);
+        while (true) {
+            let x = getRandomInt(1, 49);
+            if (!numbers.includes(x)) {
+                numbers.push(x);
+            }
+            if (numbers.length == length) {
+                break;
+            }
         }
-        if (numbers.length == 6) {
-            break;
-        }
+        numbers.sort(compare)
+        rows.push(numbers);
     }
-    numbers.sort(compare)
-    rows.push(numbers);
+    return rows;
 }
+
+function getLottroy() {
+    // alert('click!');
+
+    const lottoryEl = document.querySelector('#lottroy');
+    let num = prompt("組數")
+    let length = prompt("幾個號碼")
+    rows = getNumbers(num, length);
+    lottoryEl.innerHTML = "";
+    for (let i = 0; i < rows.length; i++) {
+        result = rows[i].join(" , ");
+        // console.log(result);
+        lottoryEl.innerHTML += `<h3>第${i + 1}組號碼：${result}</h3><hr>`
+        // document.write(`<h3>第${i + 1}組號碼：${result}</h3><hr>`)
+    }
+}
+
+const dateEl = document.querySelector(".date");
+dateEl.innerText = Date()
+
+
+// console.log(dateEl)
+
+// document.write(Date() + '<hr>');
+
 // 升續 
 function compare(a, b) {
     return a - b;
 }
 
-console.log(rows)
-
-const lottoryEl = document.querySelector('#lottroy');
 
 
-for (let i = 0; i < rows.length; i++) {
-    result = rows[i].join(" , ");
-    // console.log(result);
-    lottoryEl.innerHTML += `<h3>第${i + 1}組號碼：${result}</h3><hr>`
-    // document.write(`<h3>第${i + 1}組號碼：${result}</h3><hr>`)
-}
+
 
 // let rows = [];
 // for (let j = 0; j < 5; j++) {
@@ -95,7 +113,7 @@ function getBmi(height, weight) {
 
 
 const h1 = document.querySelector("h1");
-console.log(lottoryEl)
+// console.log(lottoryEl)
 console.log(h1)
 h1.innerHTML = "<u>大樂透</u>";
 h1.style.color = 'red';
